@@ -15,7 +15,9 @@ public class PlayerPrimaryAttack : PlayerState
     {
         base.Enter();
 
-        if (player.comboCounter > 2 || Time.time >= lastTimeAttacked + comboWindow)
+        //player.hasAttackInputBuffer = false;
+
+        if (player.comboCounter > 2 || Time.time >= lastTimeAttacked + comboWindow)     // combo完成 || 超过连击窗口，重置combo
             player.comboCounter = 0;
         player.anim.SetInteger("comboCounter", player.comboCounter);
 
@@ -37,8 +39,7 @@ public class PlayerPrimaryAttack : PlayerState
     {
         base.Exit();
 
-        player.comboCounter++;
-        player.isHit = false;
+        //player.isHit = false;
         lastTimeAttacked = Time.time;
     }
 
@@ -49,9 +50,17 @@ public class PlayerPrimaryAttack : PlayerState
 
         player.SetVelocity(xInput * player.moveSpeed * 0.1f, rb.velocity.y);
 
-        if (triggerCalled)
-            stateMachine.ChangeState(player.idleState);
+        // 预输入
+        //if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.JoystickButton5))
+        //    player.SetAttackInputBufferTime();
 
+        // 只有动画结束才能退出这个状态
+        if (triggerCalled)
+        {
+            player.comboCounter++;
+
+            stateMachine.ChangeState(player.idleState);
+        }
 
     }
 

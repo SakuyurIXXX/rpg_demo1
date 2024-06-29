@@ -50,7 +50,7 @@ public class PlayerCounterAttackState : PlayerState
 
 
                 player.stats.DoDamage(_target, player.lookDirection); // 造成伤害
-                player.CounterImpactFX(); // 造成视觉效果
+                player.SetCounterImpactFX(); // 造成视觉效果
 
                 player.anim.SetBool("CounterAttackSuccessful", true);
             }

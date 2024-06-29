@@ -22,6 +22,9 @@ public class SkillScroll : MonoBehaviour
 
             if (skillName == "counter")
                 SkillManager.instance.counterAttack.UnlockCounter();
+
+            if (skillName == "wallbounce")
+                SkillManager.instance.wallBounce.UnlockWallBounce();
         }
     }
 }

@@ -7,7 +7,7 @@ public class WallBounce : Skill
     protected override void CheckUnlocked()
     {
         if (skillTreeSlot.unlocked)
-            UnlockDash();
+            UnlockWallBounce();
     }
 
     public override void UseSkill()
@@ -16,7 +16,7 @@ public class WallBounce : Skill
 
     }
 
-    public void UnlockDash()
+    public void UnlockWallBounce()
     {
         unlocked = true;
         skillTreeSlot.UnlockSkillSlot();

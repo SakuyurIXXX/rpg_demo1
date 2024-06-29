@@ -7,6 +7,7 @@ public class ParallexBackGround : MonoBehaviour
     private GameObject cam;
 
     [SerializeField] private float parallexEffect;
+    [SerializeField] private bool followY;
     private float xPosition;
     private float yPosition;
     void Start()
@@ -21,7 +22,10 @@ public class ParallexBackGround : MonoBehaviour
     {
         Vector2 distanceToMove = new Vector2(cam.transform.position.x * parallexEffect, cam.transform.position.y);
 
-        transform.position = new Vector3(xPosition + distanceToMove.x, yPosition + distanceToMove.y);
+        if (followY)
+            transform.position = new Vector3(xPosition + distanceToMove.x, yPosition + distanceToMove.y);
+        else
+            transform.position = new Vector3(xPosition + distanceToMove.x, yPosition);
 
     }
 }

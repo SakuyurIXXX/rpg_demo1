@@ -15,15 +15,15 @@ public class Player : Entity
     /// </summary>
     /// 
 
-    //public bool hasAttackInputBuffer;
-    //[SerializeField] private float attackInputBufferTime;
+    //public bool hasAttackInputBuffer;                                           // 攻击预输入判断
+    //[SerializeField] private float attackInputBufferTime = 0.2f;                // 预输入时间
     //WaitForSeconds waitAttackInputBufferTime;
 
     private SkillManager skills;
 
     [Space]
     [HideInInspector] public int comboCounter;
-    [HideInInspector] public bool isHit;                                       // 防止一次攻击造成多段伤害
+    //[HideInInspector] public bool isHit;                                       // 防止一次攻击造成多段伤害
     [HideInInspector] public bool isJumped;                                    // Coyote Time
 
     public float counterAttackDuration;                                        // 反击持续时间
@@ -53,8 +53,9 @@ public class Player : Entity
     #endregion
 
     #region 打击感相关
-    [Header("屏幕震动")]
+    [Header("打击感相关")]
     private Animator hitAnim;
+    private Animator counterAnim;
     public CinemachineImpulseSource impulseSource;
     #endregion  
 
@@ -102,6 +103,7 @@ public class Player : Entity
         defaultJumpSpeed = jumpSpeed;
 
         hitAnim = anim.transform.GetChild(0).GetComponent<Animator>();
+        counterAnim = anim.transform.GetChild(1).GetComponent<Animator>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
 
         skills = SkillManager.instance;
@@ -135,13 +137,12 @@ public class Player : Entity
 
     //public void CheckAttackBuffer()
     //{
-    //    if (isAttack && Input.GetKeyDown(KeyCode.Mouse0) || isAttack && Input.GetKeyDown(KeyCode.JoystickButton5))
-    //        SetAttackInputBufferTime();
+
     //}
 
-    public void CounterImpactFX()
+    public void SetCounterImpactFX()
     {
-        hitAnim.SetTrigger("Hit"); // 打击特效
+        counterAnim.SetTrigger("Counter"); // 打击特效
 
         AttackPauseManager.instance.SetImapctFX(impulseSource, new Vector3(0.05f, 0.05f, 0), lookDirection, 6);
     }
@@ -151,9 +152,8 @@ public class Player : Entity
     //攻击碰撞检测 配合动画调整AttackArea使用
     private void OnTriggerEnter2D(Collider2D enemyCollision)
     {
-        if (enemyCollision.CompareTag("Enemy") && isHit == false)
+        if (enemyCollision.CompareTag("Enemy"))
         {
-            isHit = true;
             EnemyStats _target = enemyCollision.GetComponent<EnemyStats>();
 
             stats.DoDamage(_target, lookDirection);
@@ -161,7 +161,7 @@ public class Player : Entity
             //Inventory.instance.GetEquipment(EquipmentType.Weapen).ExecuteItemEffect();
 
 
-            hitAnim.SetTrigger("Hit"); // 打击特效
+            //hitAnim.SetTrigger("Hit"); // 打击特效
             if (comboCounter == 2)
                 AttackPauseManager.instance.SetImapctFX(impulseSource, new Vector3(0.05f, 0.05f, 0), lookDirection, hitPause);
             else
@@ -174,7 +174,7 @@ public class Player : Entity
     //private void OnGUI()
     //{
     //    Rect rect = new Rect(200, 200, 200, 200);
-    //    string message = "预输入: " +  ;
+    //    string message = "预输入: " + hasAttackInputBuffer;
     //    GUIStyle style = new GUIStyle();
     //    style.fontSize = 30;
     //    style.fontStyle = FontStyle.Bold;
@@ -182,13 +182,13 @@ public class Player : Entity
     //}
 
 
-    //public void SetAttackInputBufferTime()
+    //public void SetAttackInputBufferTime()                  // 开启攻击预输入协程
     //{
     //    StopCoroutine("AttackInputBufferCoroutine");
     //    StartCoroutine("AttackInputBufferCoroutine");
     //}
 
-    //IEnumerator AttackInputBufferCoroutine()
+    //IEnumerator AttackInputBufferCoroutine()                // 经过一段时间要自动取消预输入，防止过早按下也能进入攻击状态
     //{
     //    hasAttackInputBuffer = true;
     //    yield return waitAttackInputBufferTime;
