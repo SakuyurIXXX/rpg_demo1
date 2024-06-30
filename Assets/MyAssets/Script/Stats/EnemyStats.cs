@@ -24,6 +24,8 @@ public class EnemyStats : CharacterStats
 
     public override void Die()
     {
+        // 消除实体用的是EnemyAnimationTrigger的DeadTrigger()
+
         base.Die();
         enemy.Die();
 

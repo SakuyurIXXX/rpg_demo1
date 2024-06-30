@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy_GoblinAnimationTriggers : EnemyAnimationTriggers
 {
-    // ×¢ÊÍÏê¼ûPlayerAnimationTriggers.cs
     Enemy_Goblin goblin => GetComponentInParent<Enemy_Goblin>();
 
     private void AnimationFinishTrigger() => goblin.AnimationFinishTrigger();

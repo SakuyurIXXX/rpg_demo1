@@ -5,22 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] private string sceneName;
+    [SerializeField] private string sceneToChange;
     [SerializeField] UI_FadeScreen fadeScreen;
 
-    private void OnTriggerEnter2D(Collider2D enemyCollision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(LoadScreenWithFadeEffect(1f));
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+            StartCoroutine(LoadScreenWithFadeEffect(1f, collision));
     }
 
 
 
-    IEnumerator LoadScreenWithFadeEffect(float _delay)
+    IEnumerator LoadScreenWithFadeEffect(float _delay, Collider2D collision)
     {
         fadeScreen.FadeOut();
 
         yield return new WaitForSeconds(_delay);
 
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneToChange);
+
+        if (sceneToChange == "Cave")
+            collision.transform.position = new Vector2(-6.6f, -2f);
+
+        if (sceneToChange == "MainScene")
+            collision.transform.position = new Vector2(56f, -4f);
+
     }
 }

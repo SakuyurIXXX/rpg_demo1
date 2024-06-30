@@ -148,6 +148,7 @@ public class CharacterStats : MonoBehaviour
 
     }
 
+    // hitDirection -1/1
     // damageType 0=crit,1=fire ,2=ice ,3=lighing ,4=normal
     public virtual void TakeDamage(int _damage, int _hitDirecition, int _damageType)
     {

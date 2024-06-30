@@ -22,7 +22,7 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private float soulsAmount;
     [SerializeField] private float increaseRate;
 
-    private SkillManager skills;
+    //private SkillManager skills;
     void Start()
     {
         if (playerStats != null)
@@ -36,7 +36,7 @@ public class UI_InGame : MonoBehaviour
 
         }
 
-        skills = SkillManager.instance;
+        //skills = SkillManager.instance;
 
     }
 

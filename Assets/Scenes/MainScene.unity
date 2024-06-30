@@ -8163,7 +8163,7 @@ RectTransform:
   m_Father: {fileID: 168711539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8536,7 +8536,7 @@ Transform:
   m_GameObject: {fileID: 446298097}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5849247, y: 1.1721032, z: -9.928349}
+  m_LocalPosition: {x: 28.325075, y: 0.29210305, z: -9.928349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13144,7 +13144,7 @@ Transform:
   m_GameObject: {fileID: 630317965}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.07, y: -3.09, z: 0}
+  m_LocalPosition: {x: 55.98, y: -3.97, z: 0}
   m_LocalScale: {x: 0.86742, y: 0.86742, z: 0.86742}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39423,7 +39423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40393f6a05508746bf104e2b3fe16d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDown: 1.75
+  coolDown: 1
   unlocked: 0
   skillTreeSlot: {fileID: 1807002481}
 --- !u!114 &1200544531
@@ -50472,7 +50472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba414ee4667e714db3b38243cd45b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Cave
+  sceneToChange: Cave
   fadeScreen: {fileID: 422818482}
 --- !u!1 &1843499180
 GameObject:
@@ -51294,7 +51294,7 @@ Transform:
   m_GameObject: {fileID: 1938443893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.584921, y: 1.2621033, z: -9.928349}
+  m_LocalPosition: {x: 24.400633, y: 1.2621038, z: -9.928349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53794,7 +53794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2103685782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53811,7 +53811,7 @@ MonoBehaviour:
   deathBringerHpSlider: {fileID: 1482569812}
   boss: {fileID: 0}
   bossStats: {fileID: 0}
-  playerStats: {fileID: 0}
+  playerStats: {fileID: 630317966}
   playerHpSlider: {fileID: 1468435716}
   dashImage: {fileID: 1158744556}
   currentSouls: {fileID: 450914859}
