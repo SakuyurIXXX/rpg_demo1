@@ -8,7 +8,6 @@ public class PlayerAirState : PlayerState
     // airState -> wallSlideState
     // airState -> edgeGrabState
     private float coyoteTimer;
-    private SkillManager skills;
 
     public PlayerAirState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
@@ -18,7 +17,6 @@ public class PlayerAirState : PlayerState
     {
         base.Enter();
         coyoteTimer = 0.3f;
-        skills = SkillManager.instance;
     }
 
     public override void Exit()
@@ -53,6 +51,10 @@ public class PlayerAirState : PlayerState
         // -> edgeGrabState
         if (!player.IsEdgeDetected() && player.IsWallDetected())
             stateMachine.ChangeState(player.edgeGrabState);
+
+        // -> counterAttackState
+        if (Input.GetKeyDown(KeyCode.Mouse1) && skills.counterAttack.unlocked && skills.counterAttack.CanUseSkill() || Input.GetKeyDown(KeyCode.JoystickButton4) && skills.counterAttack.unlocked && skills.counterAttack.CanUseSkill())
+            stateMachine.ChangeState(player.counterAttackState);
 
     }
 }

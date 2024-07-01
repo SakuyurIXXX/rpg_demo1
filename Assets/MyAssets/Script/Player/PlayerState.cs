@@ -18,12 +18,14 @@ public class PlayerState
     protected Rigidbody2D rb;//纯简化，将player.rb --> rb
     #endregion
 
-    private string animBoolName; // 动画的name，传参用
-    protected float xInput; // 因为move和idle属于状态，所以移动输入属于状态相关属性而不是player里的基本属性
+    private string animBoolName;            // 动画的name，传参用
+    protected float xInput;                 // 因为move和idle属于状态，所以移动输入属于状态相关属性而不是player里的基本属性
     protected float yInput;
 
-    protected float stateTimer; // 状态计时器，控制状态持续时间
-    protected bool triggerCalled; // 判断退出状态，目前只用来对应攻击动画最后一帧，退出当前combo进入下一combo或idle状态
+    protected float stateTimer;             // 状态计时器，控制状态持续时间
+    protected bool triggerCalled;           // 判断退出状态，目前只用来对应攻击动画最后一帧，退出当前combo进入下一combo或idle状态
+
+    protected SkillManager skills;
     public PlayerState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
     {
         this.player = _player;
@@ -33,9 +35,10 @@ public class PlayerState
 
     public virtual void Enter()
     {
-        player.anim.SetBool(animBoolName, true); // 通过animator自带的函数，将animator里的Bool值改变为想要的值
-        rb = player.rb; // 纯简化，将player.rb --> rb
+        player.anim.SetBool(animBoolName, true);    // 通过animator自带的函数，将animator里的Bool值改变为想要的值
+        rb = player.rb;                             // 纯简化，将player.rb --> rb
         triggerCalled = false;
+        skills = SkillManager.instance;
 
     }
     public virtual void Exit()
@@ -47,15 +50,13 @@ public class PlayerState
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-
-        //if (player.isAttack)
-        //    player.SetVelocity(xInput * player.moveSpeed * 0.1f, rb.velocity.y);
-        //else
         player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y); // 在所有状态中都可以横向移动
 
 
         player.anim.SetFloat("Y Velocity", rb.velocity.y); // 监测y轴速度并传值，在animator中有根据"Y Velocity"播放的动画
         stateTimer -= Time.deltaTime; //状态持续时间倒计时，部分状态在进入时重置stateTimer，倒计时归零时退出该状态
+
+
     }
 
     public virtual void AnimationFinishTrigger()

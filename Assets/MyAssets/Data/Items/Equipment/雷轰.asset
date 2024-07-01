@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u96F7\u8F70"
   m_EditorClassIdentifier: 
   itemtype: 1
-  itemName: "\u96F7\u8F70"
+  itemName: "\u9F50\u683C\xB7b\xB7\u6781\xB7\u4EC0\u4E48\u4EC0\u4E48"
   itemDescription: "  \u96F7\u5F02\u5E38\uFF1A-20%\u62A4\u7532\uFF0C-20%\u547D\u4E2D"
   icon: {fileID: 554688507, guid: c9f6a671d0f3d034e8b584bb3cc52aea, type: 3}
   itemId: 1e895bc23d0474746b9d985bee917347

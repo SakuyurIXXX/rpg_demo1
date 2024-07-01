@@ -7,7 +7,6 @@ public class PlayerDashState : PlayerState
     // dashState -> idleState
     // dashState -> wallJumpState
 
-    private SkillManager skills;
     public PlayerDashState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
@@ -15,7 +14,6 @@ public class PlayerDashState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        skills = SkillManager.instance;
 
         player.stats.MakeInvincible(true);
         // 状态时间 = 冲的时间

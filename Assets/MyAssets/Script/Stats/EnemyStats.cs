@@ -33,6 +33,7 @@ public class EnemyStats : CharacterStats
         enemy.Die();
 
         PlayerManager.instance.souls += soulsDropAmount.GetValue();
+
         if (isDropped == false)
         {
             myDropSystem.GenerateDrop();

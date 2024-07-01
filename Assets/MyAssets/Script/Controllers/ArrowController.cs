@@ -1,8 +1,9 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private CharacterStats stats;
     [SerializeField] private string targetLayerName = "Player";
 
     [SerializeField] private float xVelocity;
@@ -29,10 +30,10 @@ public class ArrowController : MonoBehaviour
             rb.velocity = new Vector2(xVelocity, rb.velocity.y);
     }
 
-    public void SetupArrow(float _speed, int _damage)
+    public void SetupArrow(float _speed, CharacterStats _stats)
     {
         xVelocity = _speed;
-        damage = _damage;
+        stats = _stats;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,7 +41,8 @@ public class ArrowController : MonoBehaviour
         // 对实体造成伤害
         if (collision.gameObject.layer == LayerMask.NameToLayer(targetLayerName))
         {
-            collision.GetComponent<CharacterStats>().TakeDamage(damage, arrowDirection, 4);
+
+            stats.DoDamageTo(collision.GetComponent<CharacterStats>(), arrowDirection);
             StuckIntoTarget(collision);
         }
         // 停止移动

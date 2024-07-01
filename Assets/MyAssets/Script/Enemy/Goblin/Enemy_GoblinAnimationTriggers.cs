@@ -19,7 +19,7 @@ public class Enemy_GoblinAnimationTriggers : EnemyAnimationTriggers
             {
                 PlayerStats _target = hit.GetComponent<PlayerStats>();
 
-                goblin.stats.DoDamage(_target, goblin.lookDirection);
+                goblin.stats.DoDamageTo(_target, goblin.lookDirection);
 
                 AttackPauseManager.instance.HitPause(goblin.hitPause); // ถูึก
 

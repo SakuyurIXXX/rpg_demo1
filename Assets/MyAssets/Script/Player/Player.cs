@@ -156,7 +156,7 @@ public class Player : Entity
         {
             EnemyStats _target = enemyCollision.GetComponent<EnemyStats>();
 
-            stats.DoDamage(_target, lookDirection);
+            stats.DoDamageTo(_target, lookDirection);
 
             //Inventory.instance.GetEquipment(EquipmentType.Weapen).ExecuteItemEffect();
 

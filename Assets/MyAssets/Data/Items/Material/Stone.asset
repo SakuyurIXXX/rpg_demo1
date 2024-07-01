@@ -17,4 +17,4 @@ MonoBehaviour:
   itemDescription: "\u54E5\u5E03\u6797\u6536\u96C6\u7684\u77F3\u5934"
   icon: {fileID: -900131409, guid: f494b9793cab3f945b34561ba9d3004b, type: 3}
   itemId: 41fd6737bf8251342a8ecd6446f61c17
-  dropChance: 100
+  dropChance: 80

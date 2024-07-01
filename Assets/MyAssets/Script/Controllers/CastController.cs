@@ -25,7 +25,7 @@ public class CastController : MonoBehaviour
             if (hit.GetComponent<Player>() != null)
             {
                 hit.GetComponent<Player>().SetKnockbackForce(new Vector2(3, 3));
-                mystats.DoDamage(hit.GetComponent<CharacterStats>(), hit.GetComponent<Player>().lookDirection * -1);
+                mystats.DoDamageTo(hit.GetComponent<CharacterStats>(), hit.GetComponent<Player>().lookDirection * -1);
 
                 // ¶ÙÖ¡+ÆÁÄ»Õð¶¯
                 impulseSource = GetComponent<CinemachineImpulseSource>();

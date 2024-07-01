@@ -113,7 +113,7 @@ public class CharacterStats : MonoBehaviour
     }
     #endregion
 
-    public virtual void DoDamage(CharacterStats _targetStats, int _hitDirection)
+    public virtual void DoDamageTo(CharacterStats _targetStats, int _hitDirection)
     {
 
 

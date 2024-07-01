@@ -20,7 +20,7 @@ public class EnemyAnimationTriggers : MonoBehaviour
             {
                 PlayerStats _target = hit.GetComponent<PlayerStats>();
 
-                enemy.stats.DoDamage(_target, enemy.lookDirection);
+                enemy.stats.DoDamageTo(_target, enemy.lookDirection);
             }
         }
     }

@@ -9,7 +9,6 @@ public class PlayerGroundedState : PlayerState
     // GroundedState -> jumpState
     // GroundedState -> primaryAttackState
     // GroundedState -> counterAttackState
-    private SkillManager skills;
 
     public PlayerGroundedState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
@@ -18,7 +17,6 @@ public class PlayerGroundedState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        skills = SkillManager.instance;
     }
 
     public override void Exit()

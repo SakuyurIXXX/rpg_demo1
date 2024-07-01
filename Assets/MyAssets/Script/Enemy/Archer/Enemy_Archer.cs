@@ -47,7 +47,7 @@ public class Enemy_Archer : Enemy
     public void ShootTrigger()
     {
         GameObject arrowInstance = Instantiate(arrow, attackCheck.position, Quaternion.identity);
-        arrowInstance.GetComponent<ArrowController>().SetupArrow(7 * lookDirection, stats.damage.GetValue());
+        arrowInstance.GetComponent<ArrowController>().SetupArrow(7 * lookDirection, stats);
     }
 
     public override bool CanBeStunned()

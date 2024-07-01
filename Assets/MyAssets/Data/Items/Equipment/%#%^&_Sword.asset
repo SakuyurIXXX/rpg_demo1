@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: '%#%^&_Sword'
   m_EditorClassIdentifier: 
   itemtype: 1
-  itemName: '%#%^&_Sword'
-  itemDescription: ????
+  itemName: '%#%^&*()_+'
+  itemDescription: "\u7EAF\u7269\u7406"
   icon: {fileID: 1204381075, guid: c9f6a671d0f3d034e8b584bb3cc52aea, type: 3}
   itemId: a229aea9d4a83714aadfa81bd7c61991
   dropChance: 1

@@ -34,7 +34,7 @@ public class PlayerCounterAttackState : PlayerState
         base.Update();
 
 
-        player.SetVelocity(0, 0);
+        player.SetVelocity(0, rb.velocity.y);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackCheckRadius);
 
         foreach (var hit in colliders)
@@ -47,7 +47,7 @@ public class PlayerCounterAttackState : PlayerState
                 EnemyStats _target = hit.GetComponent<EnemyStats>();
                 hit.GetComponent<Enemy>().isStunned = true;                     // 让怪物进入stunState
 
-                player.stats.DoDamage(_target, player.lookDirection);           // 造成伤害
+                player.stats.DoDamageTo(_target, player.lookDirection);           // 造成伤害
             }
 
             // 弹鬼手

@@ -123,14 +123,14 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Arrow
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.36956525, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 58
+      width: 46
       height: 6
     spriteID: 3d448d32fe702bb4d8c8a2e108db5cbd
     spriteBone: []
@@ -153,9 +153,9 @@ ScriptedImporter:
     - name: Arrow
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 12
         y: 0
-        width: 58
+        width: 46
         height: 6
       spriteId: 3d448d32fe702bb4d8c8a2e108db5cbd
     linkedCells: []
