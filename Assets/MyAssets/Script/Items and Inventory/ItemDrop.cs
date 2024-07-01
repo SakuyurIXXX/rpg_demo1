@@ -7,8 +7,6 @@ public class ItemDrop : MonoBehaviour
     [SerializeField] private ItemData[] possibleDrop; // 可能掉落的所有物品
     [SerializeField] private GameObject dropPrefab;
 
-
-
     public virtual void GenerateDrop()
     {
         // 遍历所有可能掉落物，概率到了的掉

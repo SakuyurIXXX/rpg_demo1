@@ -8,12 +8,15 @@ public class EnemyStats : CharacterStats
     private Enemy enemy;
     private ItemDrop myDropSystem;
     public Stat soulsDropAmount;
+    private bool isDropped;
+
 
     protected override void Start()
     {
         base.Start();
         enemy = GetComponent<Enemy>();
         myDropSystem = GetComponent<ItemDrop>();
+        isDropped = false;
     }
 
     public override void TakeDamage(int _damage, int _hitDirecition, int _damageType)
@@ -30,6 +33,11 @@ public class EnemyStats : CharacterStats
         enemy.Die();
 
         PlayerManager.instance.souls += soulsDropAmount.GetValue();
-        myDropSystem.GenerateDrop();
+        if (isDropped == false)
+        {
+            myDropSystem.GenerateDrop();
+            isDropped = true;
+        }
+
     }
 }
