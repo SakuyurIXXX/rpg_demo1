@@ -19,7 +19,7 @@ public class PlayerStats : CharacterStats
 
     }
 
-    protected override void DecreaseHpBy(int _damage)
+    public override void DecreaseHpBy(int _damage)
     {
         base.DecreaseHpBy(_damage);
 

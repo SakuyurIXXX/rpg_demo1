@@ -48,8 +48,6 @@ public class PlayerCounterAttackState : PlayerState
                 hit.GetComponent<Enemy>().isStunned = true;                     // 让怪物进入stunState
 
                 player.stats.DoDamage(_target, player.lookDirection);           // 造成伤害
-                player.SetCounterImpactFX();                                    // 造成视觉效果
-
             }
 
             // 弹鬼手
@@ -77,5 +75,6 @@ public class PlayerCounterAttackState : PlayerState
         playerStats.SetInvincibleTime(.2f);                             // 设置无敌时间
         AudioManager.instance.PlaySFX(7, null);                         // 反击成功音效
         player.anim.SetBool("CounterAttackSuccessful", true);           // 播放动画
+        player.SetCounterImpactFX();                                    // counterAttack特效
     }
 }

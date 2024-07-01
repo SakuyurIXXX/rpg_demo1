@@ -168,7 +168,7 @@ public class CharacterStats : MonoBehaviour
     }
 
     // 直接造成HP减少的方法
-    protected virtual void DecreaseHpBy(int _damage)
+    public virtual void DecreaseHpBy(int _damage)
     {
         if (isInvincible)
             return;
