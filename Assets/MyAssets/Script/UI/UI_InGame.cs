@@ -13,7 +13,7 @@ public class UI_InGame : MonoBehaviour
 
     [Header("玩家")]
     [SerializeField] private PlayerStats playerStats;
-    [SerializeField] private Slider playerHpSlider;
+    [SerializeField] private Image playerHp;
 
     [Header("可使用道具")]
     [SerializeField] private Image usableItem;
@@ -112,8 +112,8 @@ public class UI_InGame : MonoBehaviour
     // 更新血条UI
     private void UpdateHealthUI()
     {
-        playerHpSlider.maxValue = playerStats.GetMaxHpValue();
-        playerHpSlider.value = playerStats.currentHp;
+        //float playerHpPercent = (float)playerStats.currentHp / playerStats.GetMaxHpValue();
+        playerHp.fillAmount = (float)playerStats.currentHp / playerStats.GetMaxHpValue();
     }
 
     // 道具 / 技能冷却动画
