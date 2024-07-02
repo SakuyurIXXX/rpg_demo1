@@ -118,6 +118,11 @@ public class Player : Entity
         CheckForDash();
         CheckForChest();
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            InventoryManager.instance.UseFlask();
+        }
+
     }
 
     private void CheckForChest()
@@ -158,7 +163,7 @@ public class Player : Entity
 
             stats.DoDamageTo(_target, lookDirection);
 
-            //Inventory.instance.GetEquipment(EquipmentType.Weapen).ExecuteItemEffect();
+            InventoryManager.instance.GetEquipment(EquipmentType.Weapen).ExecuteItemEffect();  // 武器带的特殊效果（吸血、特效）
 
 
             //hitAnim.SetTrigger("Hit"); // 打击特效

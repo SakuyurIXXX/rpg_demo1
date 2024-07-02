@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemtype: 1
   itemName: '%#%^&*()_+'
-  itemDescription: "\u7EAF\u7269\u7406"
+  itemDescription: "\u5438\u8840\n"
   icon: {fileID: 1204381075, guid: c9f6a671d0f3d034e8b584bb3cc52aea, type: 3}
   itemId: a229aea9d4a83714aadfa81bd7c61991
   dropChance: 1
   equipmentType: 0
-  itemEffects: []
+  itemEffects:
+  - {fileID: 11400000, guid: 26a50955562b6004d986df5008519498, type: 2}
   strength: 0
   agility: 0
   intelligence: 0

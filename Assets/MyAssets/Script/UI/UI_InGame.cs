@@ -15,14 +15,17 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Slider playerHpSlider;
 
-    [SerializeField] private Image dashImage;
+    [Header("可使用道具")]
+    [SerializeField] private Image usableItem;
+    [SerializeField] private Image coolDownImage;
+    private ItemData_Equipment currentFlask;
 
     [Header("魂")]
     [SerializeField] private TextMeshProUGUI currentSouls;
     [SerializeField] private float soulsAmount;
     [SerializeField] private float increaseRate;
 
-    //private SkillManager skills;
+    private InventoryManager inventory;
     void Start()
     {
         if (playerStats != null)
@@ -36,21 +39,40 @@ public class UI_InGame : MonoBehaviour
 
         }
 
-        //skills = SkillManager.instance;
+        inventory = InventoryManager.instance;
 
     }
 
     void Update()
     {
         UpdateSoulsUI();
+        UpdateUsableItemUI();
 
-        //if (Input.GetKeyDown(KeyCode.LeftShift) && skills.dash.unlocked)
-        //    SetCoolDownOf(dashImage);
-
-        //CheckCoolDownOf(dashImage, skills.dash.coolDown);
         if (boss != null)
             CheckBossUI();
 
+    }
+
+    private void UpdateUsableItemUI()
+    {
+        if (inventory.GetEquipment(EquipmentType.Flask) != null)
+        {
+            usableItem.gameObject.SetActive(true);
+
+            currentFlask = inventory.GetEquipment(EquipmentType.Flask);
+
+            usableItem.sprite = currentFlask.icon;
+            coolDownImage.sprite = currentFlask.icon;
+
+            CheckCoolDownOf(coolDownImage, currentFlask.itemCooldown);
+
+            if (Input.GetKeyDown(KeyCode.F))
+                SetCoolDownOf(coolDownImage);
+        }
+        else
+        {
+            usableItem.gameObject.SetActive(false);
+        }
     }
 
 
@@ -94,16 +116,16 @@ public class UI_InGame : MonoBehaviour
         playerHpSlider.value = playerStats.currentHp;
     }
 
-    // 技能冷却动画
-    //private void SetCoolDownOf(Image _image)
-    //{
-    //    if (_image.fillAmount <= 0)
-    //        _image.fillAmount = 1;
-    //}
+    // 道具 / 技能冷却动画
+    private void SetCoolDownOf(Image _image)
+    {
+        if (_image.fillAmount <= 0)
+            _image.fillAmount = 1;
+    }
 
-    //private void CheckCoolDownOf(Image _image, float _cooldown)
-    //{
-    //    if (_image.fillAmount > 0)
-    //        _image.fillAmount -= 1 / _cooldown * Time.deltaTime;
-    //}
+    private void CheckCoolDownOf(Image _image, float _cooldown)
+    {
+        if (_image.fillAmount > 0)
+            _image.fillAmount -= 1 / _cooldown * Time.deltaTime;
+    }
 }

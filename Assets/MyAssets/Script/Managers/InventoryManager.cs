@@ -42,6 +42,11 @@ public class InventoryManager : MonoBehaviour, ISaveManager
     public List<ItemData_Equipment> loadedEquipment;
 
 
+    [Header("物品冷却")]
+    public ItemData_Equipment currentFlask;
+    private float lastTimeUsed;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -71,8 +76,27 @@ public class InventoryManager : MonoBehaviour, ISaveManager
 
         // 找了半天的BUG，解决游戏中重开inventory不能s&l的问题，方法是让AddStartingItems()在LoadData()执行之后再执行
         Invoke("AddStartingItems", 0.001f);
+
     }
 
+    public void UseFlask()
+    {
+        currentFlask = GetEquipment(EquipmentType.Flask);
+
+        if (currentFlask == null)
+            return;
+
+        bool canUseFlask = Time.time > lastTimeUsed + currentFlask.itemCooldown;
+
+        if (canUseFlask)
+        {
+            currentFlask.ExecuteItemEffect();
+            AudioManager.instance.PlaySFX(13, null);
+            lastTimeUsed = Time.time;
+        }
+        else
+            Debug.Log("冷却中");
+    }
 
     private void AddStartingItems()
     {

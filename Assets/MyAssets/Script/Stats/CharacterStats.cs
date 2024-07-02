@@ -167,6 +167,18 @@ public class CharacterStats : MonoBehaviour
             Die();
     }
 
+
+    public virtual void IncreaseHpBy(int _healValue)
+    {
+        currentHp += _healValue;
+        if (currentHp > GetMaxHpValue())
+            currentHp = GetMaxHpValue();
+
+        if (onHpChanged != null)
+            onHpChanged();
+    }
+
+
     // 直接造成HP减少的方法
     public virtual void DecreaseHpBy(int _damage)
     {
