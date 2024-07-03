@@ -10,19 +10,9 @@ public class Chest : MonoBehaviour
     [SerializeField] private ItemData[] dropItems;
     [SerializeField] private GameObject dropPrefab;
     private bool isOpened;
-    public GameObject interactableHint;
-    //Instantiate(interactableHint, hit.collider.transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
     private Animator anim;
 
-    private void Start()
-    {
-        anim = GetComponent<Animator>();
-    }
-    private void Update()
-    {
-        interactableHint.SetActive(false);
-    }
-
+    private void Start() => anim = GetComponent<Animator>();
 
     public virtual void GenerateDrop()
     {

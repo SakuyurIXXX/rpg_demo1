@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
             return;
         if (_sfxIndex < sfx.Length)
         {
-            //sfx[_sfxIndex].pitch = Random.Range(.85f, 1.1f);    // 随机音调
+            sfx[_sfxIndex].pitch = Random.Range(.85f, 1.1f);    // 随机音调
             sfx[_sfxIndex].Play();
         }
     }

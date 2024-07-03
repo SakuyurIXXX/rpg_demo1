@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -18,15 +19,16 @@ public class Player : Entity
     //public bool hasAttackInputBuffer;                                           // 攻击预输入判断
     //[SerializeField] private float attackInputBufferTime = 0.2f;                // 预输入时间
     //WaitForSeconds waitAttackInputBufferTime;
-
-    private SkillManager skills;
-
+    [Header("其他")]
+    public SkillManager skills;
+    public Transform interaction_UI;
     [Space]
-    [HideInInspector] public int comboCounter;
-    //[HideInInspector] public bool isHit;                                       // 防止一次攻击造成多段伤害
-    [HideInInspector] public bool isJumped;                                    // Coyote Time
-
     public float counterAttackDuration;                                        // 反击持续时间
+
+    [HideInInspector] public int comboCounter;
+    [HideInInspector] public bool isJumped;                                    // Coyote Time相关
+    //[HideInInspector] public bool isHit;                                       // 防止一次攻击造成多段伤害
+
 
 
     #region 碰撞检测相关
@@ -117,12 +119,21 @@ public class Player : Entity
         stateMachine.currentState.FixedUpdate();
         CheckForDash();
         CheckForChest();
+        CheckForHealing();
 
+    }
+
+    private void CheckForHealing()
+    {
+        if ((float)stats.currentHp / stats.GetMaxHpValue() < 0.3)
+        {
+            ShowInteractionHintUI("F");
+            Invoke("CloseInteractionHintUI", 3f);
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             InventoryManager.instance.UseFlask();
         }
-
     }
 
     private void CheckForChest()
@@ -130,14 +141,25 @@ public class Player : Entity
         RaycastHit2D hit = Physics2D.Raycast(interactionCheck.position, Vector2.right * lookDirection, interactionCheckDistance, LayerMask.GetMask("Chest"));
         if (hit.collider != null)
         {
-
             Chest chest = hit.collider.GetComponent<Chest>();
-            chest.interactableHint.SetActive(true);
+
+            ShowInteractionHintUI("E");
+
             if (Input.GetKeyDown(KeyCode.E))
-            {
                 chest.GenerateDrop();
-            }
         }
+        else
+            CloseInteractionHintUI();
+    }
+
+    private void ShowInteractionHintUI(String text)
+    {
+        interaction_UI.gameObject.SetActive(true);
+        interaction_UI.GetComponentInChildren<TextMeshProUGUI>().text = text;
+    }
+    private void CloseInteractionHintUI()
+    {
+        interaction_UI.gameObject.SetActive(false);
     }
 
     //public void CheckAttackBuffer()

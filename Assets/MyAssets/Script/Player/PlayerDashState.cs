@@ -44,7 +44,7 @@ public class PlayerDashState : PlayerState
 
 
         // -> wallSlideState
-        if (!player.IsGroundDetected() && player.IsWallDetected() && skills.wallBounce.unlocked)
+        if (!player.IsGroundDetected() && player.IsWallDetected() && player.skills.wallBounce.unlocked)
             stateMachine.ChangeState(player.wallSlideState);
     }
 }

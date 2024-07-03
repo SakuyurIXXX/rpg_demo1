@@ -16,7 +16,7 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private Image playerHp;
 
     [Header("可使用道具")]
-    [SerializeField] private Image usableItem;
+    [SerializeField] private Image property;
     [SerializeField] private Image coolDownImage;
     private ItemData_Equipment currentFlask;
 
@@ -46,22 +46,22 @@ public class UI_InGame : MonoBehaviour
     void Update()
     {
         UpdateSoulsUI();
-        UpdateUsableItemUI();
+        UpdatePropertySlotUI();
 
         if (boss != null)
             CheckBossUI();
 
     }
 
-    private void UpdateUsableItemUI()
+    private void UpdatePropertySlotUI()
     {
         if (inventory.GetEquipment(EquipmentType.Flask) != null)
         {
-            usableItem.gameObject.SetActive(true);
+            property.gameObject.SetActive(true);
 
             currentFlask = inventory.GetEquipment(EquipmentType.Flask);
 
-            usableItem.sprite = currentFlask.icon;
+            property.sprite = currentFlask.icon;
             coolDownImage.sprite = currentFlask.icon;
 
             CheckCoolDownOf(coolDownImage, currentFlask.itemCooldown);
@@ -71,7 +71,7 @@ public class UI_InGame : MonoBehaviour
         }
         else
         {
-            usableItem.gameObject.SetActive(false);
+            property.gameObject.SetActive(false);
         }
     }
 

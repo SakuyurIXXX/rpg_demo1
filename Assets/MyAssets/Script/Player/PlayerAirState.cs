@@ -45,7 +45,7 @@ public class PlayerAirState : PlayerState
         }
 
         // -> wallSlideState
-        if (player.IsWallDetected() && skills.wallBounce.unlocked == true)
+        if (player.IsWallDetected() && player.skills.wallBounce.unlocked == true)
             stateMachine.ChangeState(player.wallSlideState);
 
         // -> edgeGrabState
@@ -53,7 +53,7 @@ public class PlayerAirState : PlayerState
             stateMachine.ChangeState(player.edgeGrabState);
 
         // -> counterAttackState
-        if (Input.GetKeyDown(KeyCode.Mouse1) && skills.counterAttack.unlocked && skills.counterAttack.CanUseSkill() || Input.GetKeyDown(KeyCode.JoystickButton4) && skills.counterAttack.unlocked && skills.counterAttack.CanUseSkill())
+        if (Input.GetKeyDown(KeyCode.Mouse1) && player.skills.counterAttack.unlocked && player.skills.counterAttack.CanUseSkill() || Input.GetKeyDown(KeyCode.JoystickButton4) && player.skills.counterAttack.unlocked && player.skills.counterAttack.CanUseSkill())
             stateMachine.ChangeState(player.counterAttackState);
 
     }

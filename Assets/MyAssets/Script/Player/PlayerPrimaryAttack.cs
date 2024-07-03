@@ -16,23 +16,26 @@ public class PlayerPrimaryAttack : PlayerState
         base.Enter();
 
         //player.hasAttackInputBuffer = false;
+        Debug.Log("进入攻击");
 
         if (player.comboCounter > 2 || Time.time >= lastTimeAttacked + comboWindow)     // combo完成 || 超过连击窗口，重置combo
             player.comboCounter = 0;
         player.anim.SetInteger("comboCounter", player.comboCounter);
 
-        switch (player.comboCounter)
-        {
-            case 0:
-                AudioManager.instance.PlaySFX(0, null);
-                break;
-            case 1:
-                AudioManager.instance.PlaySFX(1, null);
-                break;
-            case 2:
-                AudioManager.instance.PlaySFX(2, null);
-                break;
-        }
+        AudioManager.instance.PlaySFX(0, null);
+
+        //switch (player.comboCounter)
+        //{
+        //    case 0:
+        //        AudioManager.instance.PlaySFX(0, null);
+        //        break;
+        //    case 1:
+        //        AudioManager.instance.PlaySFX(1, null);
+        //        break;
+        //    case 2:
+        //        AudioManager.instance.PlaySFX(2, null);
+        //        break;
+        //}
     }
 
     public override void Exit()

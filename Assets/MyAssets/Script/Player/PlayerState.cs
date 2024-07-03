@@ -25,7 +25,6 @@ public class PlayerState
     protected float stateTimer;             // 状态计时器，控制状态持续时间
     protected bool triggerCalled;           // 判断退出状态，目前只用来对应攻击动画最后一帧，退出当前combo进入下一combo或idle状态
 
-    protected SkillManager skills;
     public PlayerState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName)
     {
         this.player = _player;
@@ -38,7 +37,6 @@ public class PlayerState
         player.anim.SetBool(animBoolName, true);    // 通过animator自带的函数，将animator里的Bool值改变为想要的值
         rb = player.rb;                             // 纯简化，将player.rb --> rb
         triggerCalled = false;
-        skills = SkillManager.instance;
 
     }
     public virtual void Exit()
