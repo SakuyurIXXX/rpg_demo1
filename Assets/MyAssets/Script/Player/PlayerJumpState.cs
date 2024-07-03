@@ -21,9 +21,9 @@ public class PlayerJumpState : PlayerState
         base.Exit();
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
 
         // -> airState
         if (rb.velocity.y < 0)

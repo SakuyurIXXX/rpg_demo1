@@ -29,9 +29,9 @@ public class PlayerCounterAttackState : PlayerState
         playerStats.armor.RemoveModifier(protection);
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
 
 
         player.SetVelocity(0, rb.velocity.y);

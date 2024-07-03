@@ -27,9 +27,9 @@ public class PlayerDashState : PlayerState
         player.stats.MakeInvincible(false);
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
 
         // 刹车 动画中4/7在加速，3/7在刹车，所以计时器小于3/7player.dushDuration时减速
         if (stateTimer < .15f)

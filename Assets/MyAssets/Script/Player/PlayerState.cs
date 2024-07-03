@@ -45,17 +45,16 @@ public class PlayerState
     {
         player.anim.SetBool(animBoolName, false);
     }
-    public virtual void Update()
+
+    public virtual void FixedUpdate()
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
         player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y); // 在所有状态中都可以横向移动
 
-
         player.anim.SetFloat("Y Velocity", rb.velocity.y); // 监测y轴速度并传值，在animator中有根据"Y Velocity"播放的动画
         stateTimer -= Time.deltaTime; //状态持续时间倒计时，部分状态在进入时重置stateTimer，倒计时归零时退出该状态
-
 
     }
 

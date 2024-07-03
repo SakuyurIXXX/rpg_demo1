@@ -114,7 +114,7 @@ public class Player : Entity
             return;
 
         base.Update();
-        stateMachine.currentState.Update();
+        stateMachine.currentState.FixedUpdate();
         CheckForDash();
         CheckForChest();
 

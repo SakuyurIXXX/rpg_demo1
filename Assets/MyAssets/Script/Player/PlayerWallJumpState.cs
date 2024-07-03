@@ -20,7 +20,7 @@ public class PlayerWallJumpState : PlayerState
         base.Exit();
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
         /*没有继承基类playerState中的Update方法，问题出在player.SetVelocity(xInput * player.moveSpeed, rb.velocity.y);
         可以看到水平方向速度被一直更新成正常移动速度，这样就无法让角色蹬出去*/

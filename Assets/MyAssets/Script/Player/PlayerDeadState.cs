@@ -19,7 +19,7 @@ public class PlayerDeadState : PlayerState
         base.Exit();
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
 
         player.SetVelocity(0, 0);

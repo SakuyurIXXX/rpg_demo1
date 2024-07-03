@@ -21,9 +21,9 @@ public class PlayerMoveState : PlayerGroundedState
         AudioManager.instance.StopSFX(4);
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
 
         // -> idleState
         if (xInput == 0 && player.IsGroundDetected())// 暂时不知道要不要加player.IsGroundDetected()这个条件，目前看来不加也行，因为按跳了就进入jumpState了，在结束jumpState（airState)之前都不会进入到moveState

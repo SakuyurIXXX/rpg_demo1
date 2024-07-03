@@ -19,9 +19,9 @@ public class PlayerIdleState : PlayerGroundedState
         base.Exit();
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
 
 
         // -> moveState

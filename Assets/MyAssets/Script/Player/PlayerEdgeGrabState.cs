@@ -22,7 +22,7 @@ public class PlayerEdgeGrabState : PlayerState
         rb.gravityScale = 4;
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
         player.SetVelocity(0, 0);
 

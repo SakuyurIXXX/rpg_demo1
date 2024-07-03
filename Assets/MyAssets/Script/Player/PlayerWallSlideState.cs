@@ -22,7 +22,7 @@ public class PlayerWallSlideState : PlayerState
 
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
