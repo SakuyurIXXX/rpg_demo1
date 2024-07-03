@@ -6,6 +6,7 @@ public class Checkpoint : MonoBehaviour
 {
     public string id;
     public bool activationStatus;
+    public Dissolve dissolveTree;
 
     private void Start()
     {
@@ -31,5 +32,21 @@ public class Checkpoint : MonoBehaviour
         AudioManager.instance.PlaySFX(11, null);
         activationStatus = true;
 
+        if (dissolveTree != null)
+        {
+            dissolveTree.gameObject.SetActive(true);
+            dissolveTree.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+            Invoke("CreateTree", 0.1f);
+
+            // 水多加面面多加水了，这里先把gameObject.SetActive，
+            // 要等一会才能去调用让树生成的特效开启协程，不然报错
+        }
+
+    }
+
+    public void CreateTree()
+    {
+        dissolveTree.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        dissolveTree.Appear(true, false);
     }
 }

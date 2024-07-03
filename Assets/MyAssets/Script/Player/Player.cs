@@ -185,7 +185,8 @@ public class Player : Entity
 
             stats.DoDamageTo(_target, lookDirection);
 
-            InventoryManager.instance.GetEquipment(EquipmentType.Weapen).ExecuteItemEffect();  // 武器带的特殊效果（吸血、特效）
+            if (InventoryManager.instance.GetEquipment(EquipmentType.Weapen) != null)
+                InventoryManager.instance.GetEquipment(EquipmentType.Weapen).ExecuteItemEffect();  // 武器带的特殊效果（吸血、特效）
 
 
             //hitAnim.SetTrigger("Hit"); // 打击特效

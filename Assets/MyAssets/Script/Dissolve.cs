@@ -25,20 +25,24 @@ public class Dissolve : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            StartCoroutine(Vanish(true, false));
-        }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.P))
+    //    {
+    //        Vanish(true, false);
+    //    }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartCoroutine(Appear(true, false));
-        }
-    }
+    //    if (Input.GetKeyDown(KeyCode.L))
+    //    {
+    //        Appear(true, false);
+    //    }
+    //}
 
-    private IEnumerator Vanish(bool useDissolve, bool useVerticalDissolve)
+    public void Vanish(bool useDissolve, bool useVerticalDissolve) => StartCoroutine(VanishIEnumerator(useDissolve, useVerticalDissolve));
+
+    public void Appear(bool useDissolve, bool useVerticalDissolve) => StartCoroutine(AppearIEnumerator(useDissolve, useVerticalDissolve));
+
+    public IEnumerator VanishIEnumerator(bool useDissolve, bool useVerticalDissolve)
     {
         float elapsedTime = 0f;
         while (elapsedTime < _dissolveTime)
@@ -60,7 +64,7 @@ public class Dissolve : MonoBehaviour
         }
     }
 
-    private IEnumerator Appear(bool useDissolve, bool useVerticalDissolve)
+    public IEnumerator AppearIEnumerator(bool useDissolve, bool useVerticalDissolve)
     {
         float elapsedTime = 0f;
         while (elapsedTime < _dissolveTime)
