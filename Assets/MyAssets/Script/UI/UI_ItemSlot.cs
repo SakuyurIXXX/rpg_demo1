@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 
 public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Image itemImage;
-    [SerializeField] private TextMeshProUGUI itemText;
+    [SerializeField] protected Image itemImage;
+    [SerializeField] protected TextMeshProUGUI itemText;
 
     protected UI ui;
     public InventoryItem item;
 
 
-    void Start()
+    public virtual void Start()
     {
         ui = GetComponentInParent<UI>();
     }
@@ -66,6 +66,8 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
             InventoryManager.instance.EquipItem(item.data);
             ui.itemToolTip.HideToolTip();
         }
+
+        ui.itemToolTip.HideToolTip();
 
     }
 

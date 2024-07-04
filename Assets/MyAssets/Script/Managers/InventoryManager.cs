@@ -79,6 +79,45 @@ public class InventoryManager : MonoBehaviour, ISaveManager
 
     }
 
+    public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> _requiredMaterials)
+    {
+        List<InventoryItem> materialsToRemove = new List<InventoryItem>();
+
+        for (int i = 0; i < _requiredMaterials.Count; i++)
+        {
+            if (stashDictionary.TryGetValue(_requiredMaterials[i].data, out InventoryItem stashValue)) // 判断数量是否足够
+            {
+                if (stashValue.stackSize < _requiredMaterials[i].stackSize)
+                {
+                    Debug.Log("材料不足");
+                    return false;
+                }
+                else
+                {
+                    materialsToRemove.Add(stashValue);
+                }
+
+            }
+            else
+            {
+                Debug.Log("材料不足");
+                return false;
+            }
+        }
+
+
+        for (int i = 0; i < materialsToRemove.Count; i++)
+        {
+            RemoveItem(materialsToRemove[i].data);
+        }
+
+        AddItem(_itemToCraft);
+        Debug.Log("制作成功：" + _itemToCraft.name);
+
+        return true;
+    }
+
+
     public void UseFlask()
     {
         currentFlask = GetEquipment(EquipmentType.Flask);
@@ -260,7 +299,7 @@ public class InventoryManager : MonoBehaviour, ISaveManager
         // inventory
         if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
         {
-            // 数量< =1连数量带格子全部丨
+            // 数量=1的时候调用删除就时连数量带格子全部丨
             if (value.stackSize <= 1)
             {
                 inventory.Remove(value);
@@ -276,7 +315,7 @@ public class InventoryManager : MonoBehaviour, ISaveManager
         {
             if (stashValue.stackSize <= 1)
             {
-                stash.Remove(value);
+                stash.Remove(stashValue);
                 stashDictionary.Remove(_item);
             }
             else

@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemtype: 1
   itemName: ColdFish987
+  itemDescription: "\u51B0\u51BB\u5F02\u5E38\uFF1A-20%\u901F\u5EA6"
   icon: {fileID: 1858675185, guid: c9f6a671d0f3d034e8b584bb3cc52aea, type: 3}
   itemId: 98ac4b95cbaa66847bef5da4cf9b30ec
   dropChance: 0
   equipmentType: 0
+  itemCooldown: 0
   itemEffects: []
-  itemDescription: "\u51B0\u51BB\u5F02\u5E38\uFF1A-20%\u901F\u5EA6"
   strength: 0
   agility: 0
   intelligence: 0
@@ -34,3 +35,4 @@ MonoBehaviour:
   fireDamage: 0
   iceDamage: 40
   lightingDamage: 0
+  craftingMaterials: []

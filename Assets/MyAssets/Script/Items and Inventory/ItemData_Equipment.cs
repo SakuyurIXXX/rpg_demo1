@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum EquipmentType
@@ -38,6 +39,9 @@ public class ItemData_Equipment : ItemData
     public int fireDamage;
     public int iceDamage;
     public int lightingDamage;
+
+    [Header("制造需要材料")]
+    public List<InventoryItem> craftingMaterials;
 
 
     private int effectLength;

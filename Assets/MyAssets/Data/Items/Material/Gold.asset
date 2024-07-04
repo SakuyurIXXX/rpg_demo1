@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemtype: 0
   itemName: Gold
-  itemDescription: "\u9EC4\u91D1\uFF0C\u662F\u4E0D\u5B58\u5728\u7684\u5408\u6210\u529F\u80FD\u7684\u539F\u6750\u6599\u4E4B\u4E00"
+  itemDescription: "\u9EC4\u91D1\uFF0C\u5408\u6210\u6750\u6599\n"
   icon: {fileID: 1314366501, guid: 1c1725720d3c1af488926306620db059, type: 3}
   itemId: 2bf4cb8856bd4044d80d23b1ca9472bd
-  dropChance: 0
+  dropChance: 60

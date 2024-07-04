@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemtype: 0
   itemName: Leather
-  itemDescription: "\u76AE\u9769\uFF0C\u662F\u4E0D\u5B58\u5728\u7684\u5408\u6210\u529F\u80FD\u7684\u539F\u6750\u6599\u4E4B\u4E00"
+  itemDescription: "\u76AE\u9769\uFF0C\u5408\u6210\u6750\u6599\n"
   icon: {fileID: -41903423, guid: f494b9793cab3f945b34561ba9d3004b, type: 3}
   itemId: 93c5291e047c43047911e0173ebf95fc
   dropChance: 0

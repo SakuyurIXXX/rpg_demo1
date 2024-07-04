@@ -12,16 +12,19 @@ public class UI : MonoBehaviour, ISaveManager
     [SerializeField] private GameObject restartButton;
     [Space]
 
+    [Header("UI面板")]
     public GameObject characterUI;
     public GameObject skillTreeUI;
     public GameObject backpackUI;
+    public GameObject craftUI;
     public GameObject optionsUI;
     public GameObject inGameUI;
 
-
+    [Header("提示项")]
     public UI_ItemToolTip itemToolTip;
     public UI_SkillToolTip skillToolTip;
     public UI_BackpackToolTip backpackToolTip;
+    public UI_CraftWindow craftWindow;
 
 
     [SerializeField] private UI_VolumeSlider[] volumeSettings;
@@ -64,14 +67,14 @@ public class UI : MonoBehaviour, ISaveManager
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.C))
             SwitchWithKeyTo(characterUI);
 
-        if (Input.GetKeyDown(KeyCode.K))
-            SwitchWithKeyTo(skillTreeUI);
+        //if (Input.GetKeyDown(KeyCode.K))
+        //    SwitchWithKeyTo(skillTreeUI);
 
-        if (Input.GetKeyDown(KeyCode.M))
-            SwitchWithKeyTo(backpackUI);
+        //if (Input.GetKeyDown(KeyCode.M))
+        //    SwitchWithKeyTo(backpackUI);
     }
 
-    // 这个是在菜单里点各个标题进行的UI面板切换
+    // 在菜单里点各个标题进行的UI面板切换
     public void SwitchTo(GameObject _menu)
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -99,7 +102,7 @@ public class UI : MonoBehaviour, ISaveManager
         }
     }
 
-    // 这个是按键开启的UI面板
+    // 按键开启的UI面板
     public void SwitchWithKeyTo(GameObject _menu)
     {
         // 如果已经在当前UI面板，则关闭

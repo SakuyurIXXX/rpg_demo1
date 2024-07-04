@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemtype: 1
   itemName: "\u7532"
-  itemDescription: "\u9632\u5FA1\u5C5E\u6027\u592A\u9AD8\u8D35\u4E86"
-  icon: {fileID: 51632263, guid: 834d1d3c6f7ec7940a98379ef293ae71, type: 3}
-  itemId: 5a168e8e00e04ec45a927776c9b18d10
-  dropChance: 2
+  itemDescription: "\u4E0D\u77E5\u9053\u5199\u4EC0\u4E48"
+  icon: {fileID: -425740675, guid: 834d1d3c6f7ec7940a98379ef293ae71, type: 3}
+  itemId: 42850c744a4169d4db7d91837a72ef27
+  dropChance: 0
   equipmentType: 1
+  itemCooldown: 0
   itemEffects: []
   strength: 0
   agility: 0
@@ -27,10 +28,11 @@ MonoBehaviour:
   damage: 0
   critChance: 0
   critPower: 0
-  hp: 40
-  armor: 25
+  hp: 30
+  armor: 15
   evasion: 0
   magicResistance: 0
   fireDamage: 0
   iceDamage: 0
   lightingDamage: 0
+  craftingMaterials: []

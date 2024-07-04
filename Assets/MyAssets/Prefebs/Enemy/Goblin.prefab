@@ -579,6 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleDrop:
   - {fileID: 11400000, guid: 41fd6737bf8251342a8ecd6446f61c17, type: 2}
+  - {fileID: 11400000, guid: fd760b411d84b19479f4e5fc1203e68e, type: 2}
   dropPrefab: {fileID: 6490144279451248421, guid: 569f0f701e0441943bb11a6d29ad3d33, type: 3}
 --- !u!1 &2461601038967980751
 GameObject:

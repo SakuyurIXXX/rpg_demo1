@@ -280,8 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2097c42ead6e624ea4e331fda7670cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleDrop: []
-  dropPrefab: {fileID: 0}
+  possibleDrop:
+  - {fileID: 11400000, guid: 2bf4cb8856bd4044d80d23b1ca9472bd, type: 2}
+  dropPrefab: {fileID: 6490144279451248421, guid: 569f0f701e0441943bb11a6d29ad3d33, type: 3}
 --- !u!114 &6552948428302584443
 MonoBehaviour:
   m_ObjectHideFlags: 0
