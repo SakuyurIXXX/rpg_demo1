@@ -33,5 +33,12 @@ public class PlayerJumpState : PlayerState
         if (Input.GetKeyDown(KeyCode.Mouse1) && player.skills.counterAttack.unlocked && player.skills.counterAttack.CanUseSkill() || Input.GetKeyDown(KeyCode.JoystickButton4) && player.skills.counterAttack.unlocked && player.skills.counterAttack.CanUseSkill())
             stateMachine.ChangeState(player.counterAttackState);
 
+        // ->attack
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.JoystickButton5))
+        {
+            player.comboCounter = 2;
+            stateMachine.ChangeState(player.primaryAttackState);
+        }
+
     }
 }

@@ -16,7 +16,7 @@ public class Skill : MonoBehaviour
 
     private void Start()
     {
-        Invoke("CheckUnlocked", .1f);                              // 必须延时执行,日常神秘bug
+        Invoke("CheckUnlocked", .1f);                              // 必须延时执行
     }
     protected virtual void Update()
     {

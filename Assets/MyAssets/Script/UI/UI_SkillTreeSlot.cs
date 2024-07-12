@@ -44,8 +44,7 @@ public class UI_SkillTreeSlot : MonoBehaviour, ISaveManager, IPointerEnterHandle
 
     private void CheckUnlock()                               // 检查解锁状态，改变技能格子颜色
     {
-        // 未解锁
-        if (unlocked == true)
+        if (unlocked)
             skillImage.color = Color.white;
         else
             skillImage.color = lockedSkillColor;
@@ -93,7 +92,10 @@ public class UI_SkillTreeSlot : MonoBehaviour, ISaveManager, IPointerEnterHandle
     public void LoadData(GameData _data)
     {
         if (_data.skillTree.TryGetValue(skillName, out bool value))
+        {
             unlocked = value;
+            //Debug.Log(skillName + " " + unlocked);
+        }
     }
 
     public void SaveData(ref GameData _data)                                            // 检查字典里有没有一样的值，有的话要删除

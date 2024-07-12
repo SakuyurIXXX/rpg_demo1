@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] private string sceneToChange;
+    [SerializeField] private string scene;
     [SerializeField] UI_FadeScreen fadeScreen;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,12 +22,15 @@ public class ChangeScene : MonoBehaviour
 
         yield return new WaitForSeconds(_delay);
 
-        SceneManager.LoadScene(sceneToChange);
+        SceneManager.LoadScene(scene);
 
-        if (sceneToChange == "Cave")
-            collision.transform.position = new Vector2(-6.6f, -2f);
+        if (scene == "Cave")
+        {
+            collision.transform.position = new Vector2(-16f, -2f);
+            AudioManager.instance.PlayBGM(0);
+        }
 
-        if (sceneToChange == "MainScene")
+        if (scene == "MainScene")
             collision.transform.position = new Vector2(56f, -4f);
 
     }

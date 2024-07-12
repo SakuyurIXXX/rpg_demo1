@@ -9,6 +9,8 @@ public class SkillManager : MonoBehaviour
     public CounterSkill counterAttack;
     public WallBounce wallBounce;
 
+    [SerializeField] private string skillName;
+
 
     private void Awake()
     {

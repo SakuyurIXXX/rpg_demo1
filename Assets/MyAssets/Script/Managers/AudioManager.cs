@@ -31,18 +31,18 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        bgmtimer -= Time.deltaTime;
+        //bgmtimer -= Time.deltaTime;
 
-        if (!playBgm)
-            StopAllBGM();
-        else
-        {
-            if (!bgm[bgmIndex].isPlaying && bgmtimer <= 0)
-            {
-                PlayBGM(bgmIndex);
-                bgmtimer = bgmIntervalTime; // 应该改成bgm停了再计时，以后再改
-            }
-        }
+        //if (!playBgm)
+        //    StopAllBGM();
+        //else
+        //{
+        //    if (!bgm[bgmIndex].isPlaying && bgmtimer <= 0)
+        //    {
+        //        PlayBGM(bgmIndex);
+        //        bgmtimer = bgmIntervalTime; // 应该改成bgm停了再计时，以后再改
+        //    }
+        //}
     }
     public void PlaySFX(int _sfxIndex, Transform _source)
     {
@@ -61,6 +61,8 @@ public class AudioManager : MonoBehaviour
     public void StopSFX(int _index) => sfx[_index].Stop();
 
     public void StopSFXWithTime(int _index) => StartCoroutine(DecreaseVolume(sfx[_index]));
+
+    public void StopBGMWithTime(int _index) => StartCoroutine(DecreaseVolume(bgm[_index]));
 
     // 声音淡出效果，可用于SFX和BGM
     private IEnumerator DecreaseVolume(AudioSource _audio)
@@ -95,6 +97,10 @@ public class AudioManager : MonoBehaviour
         bgmIndex = Random.Range(0, bgm.Length);
         PlayBGM(bgmIndex);
     }
+    public void StopBGM(int _bgmIndex)
+    {
+        bgm[_bgmIndex].Stop();
+    }
 
     public void StopAllBGM()
     {
@@ -103,6 +109,7 @@ public class AudioManager : MonoBehaviour
             bgm[i].Stop();
         }
     }
+
 
     private void AllowSFX() => canPlaySFX = true;
 }

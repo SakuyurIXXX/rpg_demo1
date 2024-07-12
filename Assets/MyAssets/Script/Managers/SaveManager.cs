@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class SaveManager : MonoBehaviour
     private List<ISaveManager> saveManagers;
     private FileDataHandler dataHandler;
 
+
     [ContextMenu("DeleteSaveData")]
     public void DeleteSaveData()
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, encryptData);
         dataHandler.Delete();
     }
+
+
+
 
     private void Awake()
     {
@@ -36,6 +41,8 @@ public class SaveManager : MonoBehaviour
 
         LoadGame();
     }
+
+
 
     public void NewGame()
     {
@@ -75,13 +82,39 @@ public class SaveManager : MonoBehaviour
         SaveGame();
     }
 
+    //private List<ISaveManager> FindAllSaveManagers()
+    //{
+
+    //    IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>().OfType<ISaveManager>();
+
+    //    return new List<ISaveManager>(saveManagers);
+
+    //}
+
     private List<ISaveManager> FindAllSaveManagers()
     {
+        // 使用Resources.FindObjectsOfTypeAll获取所有游戏对象，包括未激活的
+        // 应急解决方法，消耗大量资源
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
 
-        IEnumerable<ISaveManager> saveManagers = FindObjectsOfType<MonoBehaviour>().OfType<ISaveManager>();
+        List<ISaveManager> saveManagers = new List<ISaveManager>();
 
-        return new List<ISaveManager>(saveManagers);
+        foreach (GameObject obj in allObjects)
+        {
+            MonoBehaviour[] monoBehaviours = obj.GetComponents<MonoBehaviour>();
+
+            foreach (MonoBehaviour behaviour in monoBehaviours)
+            {
+                if (behaviour is ISaveManager)
+                {
+                    saveManagers.Add(behaviour as ISaveManager);
+                }
+            }
+        }
+
+        return saveManagers;
     }
+
 
     public bool HasSaveData()
     {

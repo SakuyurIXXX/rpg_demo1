@@ -16,7 +16,6 @@ public class PlayerPrimaryAttack : PlayerState
         base.Enter();
 
         //player.hasAttackInputBuffer = false;
-        Debug.Log("进入攻击");
 
         if (player.comboCounter > 2 || Time.time >= lastTimeAttacked + comboWindow)     // combo完成 || 超过连击窗口，重置combo
             player.comboCounter = 0;

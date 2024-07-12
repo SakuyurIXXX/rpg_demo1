@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour, ISaveManager
 
     private void Start()
     {
-
+        if (SceneManager.GetActiveScene().name == "Cave")
+            AudioManager.instance.PlayBGM(0);
     }
 
     private void Update()

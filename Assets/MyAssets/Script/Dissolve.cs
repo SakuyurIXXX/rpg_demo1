@@ -25,18 +25,18 @@ public class Dissolve : MonoBehaviour
 
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.P))
-    //    {
-    //        Vanish(true, false);
-    //    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Vanish(true, false);
+        }
 
-    //    if (Input.GetKeyDown(KeyCode.L))
-    //    {
-    //        Appear(true, false);
-    //    }
-    //}
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Appear(true, false);
+        }
+    }
 
     public void Vanish(bool useDissolve, bool useVerticalDissolve) => StartCoroutine(VanishIEnumerator(useDissolve, useVerticalDissolve));
 

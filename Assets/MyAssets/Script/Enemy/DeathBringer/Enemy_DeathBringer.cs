@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy_DeathBringer : Enemy
 {
     public bool bossFightBegun;
+    private bool bgmPlayed;
 
     public CinemachineImpulseSource impulseSource;
 
@@ -50,11 +51,24 @@ public class Enemy_DeathBringer : Enemy
         base.Start();
         stateMachine.Initialize(idleState);
         impulseSource = GetComponent<CinemachineImpulseSource>();
+
     }
 
     protected override void Update()
     {
         base.Update();
+
+        if (bossFightBegun && !bgmPlayed)
+        {
+            AudioManager.instance.PlayBGM(1);
+            bgmPlayed = true;
+        }
+        else if (!bossFightBegun)
+        {
+            AudioManager.instance.StopBGM(1);
+            bgmPlayed = false;
+        }
+
         // 血量<=50%进入二阶段
         if (stats.currentHp <= stats.hp.GetValue() / 2)
         {
@@ -70,6 +84,7 @@ public class Enemy_DeathBringer : Enemy
     public override void Die()
     {
         base.Die();
+        bossFightBegun = false;
         stateMachine.ChangeState(deadState);
     }
 
