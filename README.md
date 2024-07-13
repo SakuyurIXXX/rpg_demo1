@@ -2,120 +2,96 @@
 
 # Reach Out
 
-Unity 2D类银河恶魔城ARPG demo 
+Unity 2D 类银河恶魔城ARPG demo 
 
 
 <!-- PROJECT LOGO -->
 <br />
 
-<p align="center">
-  <a href="https://github.com/shaojintian/Best_README_template/">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+<p align="center">    
+  <a href="https://github.com/SakuyurIXXX/rpg_demo1/">
+    <img src="Assets/Images/boss.png" alt="Logo" width="768" height="432">
   </a>
 
-  <h3 align="center">"完美的"README模板</h3>
+  <h3 align="center">名字是在做进入游戏的时候随机到的歌名</h3>
   <p align="center">
-    一个"完美的"README模板去快速开始你的项目！
     <br />
-    <a href="https://github.com/shaojintian/Best_README_template"><strong>探索本项目的文档 »</strong></a>
+    <a href="https://github.com/SakuyurIXXX/rpg_demo1/"><strong>探索本项目的文档 »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/shaojintian/Best_README_template">查看Demo</a>
+    <a href="https://github.com/SakuyurIXXX/rpg_demo1">查看Demo</a>
     ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">报告Bug</a>
+    <a href="https://github.com/SakuyurIXXX/rpg_demo1/issues">报告Bug</a>
     ·
-    <a href="https://github.com/shaojintian/Best_README_template/issues">提出新特性</a>
+    <a href="https://github.com/SakuyurIXXX/rpg_demo1/issues">提出新特性</a>
   </p>
 
 </p>
-
-
- 本篇README.md面向开发者
  
 ## 目录
 
-- [上手指南](#上手指南)
-  - [开发前的配置要求](#开发前的配置要求)
-  - [安装步骤](#安装步骤)
-- [文件目录说明](#文件目录说明)
-- [开发的架构](#开发的架构)
-- [部署](#部署)
-- [使用到的框架](#使用到的框架)
+- [战斗系统](#战斗系统)
+- [背包/合成系统](#背包/合成系统)
+- [技能系统](#技能系统)
+- [地图内容](#地图内容)
 - [贡献者](#贡献者)
   - [如何参与开源项目](#如何参与开源项目)
 - [版本控制](#版本控制)
 - [作者](#作者)
 - [鸣谢](#鸣谢)
 
-### 上手指南
-
-请将所有链接中的“shaojintian/Best_README_template”改为“your_github_name/your_repository”
 
 
 
-###### 开发前的配置要求
+### 战斗系统
 
-1. xxxxx x.x.x
-2. xxxxx x.x.x
+传统RPG系统，攻击方面拥有三种属性伤害（火、冰、雷）和可造成暴击的物理伤害，其中属性伤害能造成对应的属性异常效果，获取counter技能后可弹反敌人的一些招式。防御方面有护甲值、法抗、HP值、闪避以及可获得的格挡技能和冲刺技能
 
-###### **安装步骤**
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-
-```sh
-git clone https://github.com/shaojintian/Best_README_template.git
-```
-
-### 文件目录说明
-eg:
-
-```
-filetree 
-├── ARCHITECTURE.md
-├── LICENSE.txt
-├── README.md
-├── /account/
-├── /bbs/
-├── /docs/
-│  ├── /rules/
-│  │  ├── backend.txt
-│  │  └── frontend.txt
-├── manage.py
-├── /oa/
-├── /static/
-├── /templates/
-├── useless.md
-└── /util/
-
-```
+<p align="center">
+ <img src="Assets/Images/fight1.png" alt="Logo" width="384" height="216"><br>
+ <img src="Assets/Images/fight2.png" alt="Logo" width="384" height="216"><br>
+ <img src="Assets/Images/fight3.png" alt="Logo" width="384" height="216"><br>
+</p>  
 
 
+### 背包/合成系统
+
+击杀怪物后会掉落用于合成的材料：铁锭、石头、金锭等
+<p align="center">
+<img src="Assets/Images/backpack.png" alt="Logo" width="384" height="250"><br>
+<img src="Assets/Images/craft.png" alt="Logo" width="384" height="250"><br>
+</p>  
+
+合成的装备可以在“角色”面板中装备，四个格子分别是武器、护甲、饰品和道具
+<p align="center">
+<img src="Assets/Images/inventory.png" alt="Logo" width="384" height="250">
+</p>
 
 
+### 技能系统
 
-### 开发的架构 
+探索地图的过程中可以获得的技能，包括弹反、冲刺、蹬墙跳
+<p align="center">
+<img src="Assets/Images/skill.png" alt="Logo" width="400" height="250">
+</p>
 
-请阅读[ARCHITECTURE.md](https://github.com/shaojintian/Best_README_template/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
+### 地图内容
 
-### 部署
+存档点
 
-暂无
+<img src="Assets/Images/checkpoint.png" alt="Logo" width="250" height="250">
 
-### 使用到的框架
+箱子
 
-- [xxxxxxx](https://getbootstrap.com)
-- [xxxxxxx](https://jquery.com)
-- [xxxxxxx](https://laravel.com)
+<img src="Assets/Images/chest.png" alt="Logo" width="320" height="250">
+
+
 
 ### 贡献者
 
 请阅读**CONTRIBUTING.md** 查阅为该项目做出贡献的开发者。
 
 #### 如何参与开源项目
-
-贡献使开源社区成为一个学习、激励和创造的绝佳场所。你所作的任何贡献都是**非常感谢**的。
-
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -124,22 +100,18 @@ filetree
 5. Open a Pull Request
 
 
-
 ### 版本控制
 
 该项目使用Git进行版本管理。您可以在repository参看当前可用版本。
 
 ### 作者
 
-xxx@xxxx
+SakuyurIXXX
 
-知乎:xxxx  &ensp; qq:xxxxxx    
-
- *您也可以在贡献者名单中参看所有参与该项目的开发者。*
 
 ### 版权说明
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt)
+暂无
 
 ### 鸣谢
 
@@ -150,21 +122,6 @@ xxx@xxxx
 - [GitHub Pages](https://pages.github.com)
 - [Animate.css](https://daneden.github.io/animate.css)
 - [xxxxxxxxxxxxxx](https://connoratherton.com/loaders)
-
-<!-- links -->
-[your-project-path]:shaojintian/Best_README_template
-[contributors-shield]: https://img.shields.io/github/contributors/shaojintian/Best_README_template.svg?style=flat-square
-[contributors-url]: https://github.com/shaojintian/Best_README_template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/shaojintian/Best_README_template.svg?style=flat-square
-[forks-url]: https://github.com/shaojintian/Best_README_template/network/members
-[stars-shield]: https://img.shields.io/github/stars/shaojintian/Best_README_template.svg?style=flat-square
-[stars-url]: https://github.com/shaojintian/Best_README_template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg
-[license-shield]: https://img.shields.io/github/license/shaojintian/Best_README_template.svg?style=flat-square
-[license-url]: https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/shaojintian
 
 
 
