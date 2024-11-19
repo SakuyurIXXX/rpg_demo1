@@ -13,7 +13,7 @@ public class GameData
     public List<string> equipmentId;
 
     public SerializableDictionary<string, bool> checkpoints;
-    public string closestCheckpointId;
+    public string lastCheckpointId;
 
     public SerializableDictionary<string, float> volumeSettings;
     public GameData()
@@ -26,7 +26,7 @@ public class GameData
         equipmentId = new List<string>();
 
         checkpoints = new SerializableDictionary<string, bool>();
-        closestCheckpointId = string.Empty;
+        lastCheckpointId = string.Empty;
 
         volumeSettings = new SerializableDictionary<string, float>();
     }

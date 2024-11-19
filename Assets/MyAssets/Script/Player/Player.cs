@@ -119,6 +119,7 @@ public class Player : Entity
         stateMachine.currentState.FixedUpdate();
         CheckForDash();
         CheckForChest();
+        CheckForCheckpoint();
         CheckForHealing();
 
     }
@@ -150,6 +151,24 @@ public class Player : Entity
         }
         else
             CloseInteractionHintUI();
+    }
+
+    private void CheckForCheckpoint()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(interactionCheck.position, Vector2.right * lookDirection, interactionCheckDistance, LayerMask.GetMask("Checkpoint"));
+        if (hit.collider != null)
+        {
+            Checkpoint checkpoint = hit.collider.GetComponent<Checkpoint>();
+            if (checkpoint != null)
+            {
+                ShowInteractionHintUI("E");
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    checkpoint.RestAtCheckpoint(this);
+                }
+            }
+        }
     }
 
     private void ShowInteractionHintUI(String text)

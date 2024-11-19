@@ -69,11 +69,22 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        
+        // 保存前记录当前ID
+        string currentId = gameData.lastCheckpointId;
+        
+        // 调用所有SaveManager的SaveData
         foreach (ISaveManager saveManager in saveManagers)
         {
             saveManager.SaveData(ref gameData);
         }
-
+        
+        // 检查ID是否被意外改变
+        if (currentId != gameData.lastCheckpointId)
+        {
+            Debug.LogWarning($"警告：ID在保存过程中被改变 - 原ID: {currentId}, 新ID: {gameData.lastCheckpointId}");
+        }
+        
         dataHandler.Save(gameData);
     }
 
@@ -121,6 +132,18 @@ public class SaveManager : MonoBehaviour
         if (dataHandler.Load() != null)
             return true;
         return false;
+    }
+
+    // 添加公共方法来获取最后检查点ID
+    public string GetLastCheckpointId()
+    {
+        return gameData.lastCheckpointId;
+    }
+    
+    // 添加公共方法来设置最后检查点ID
+    public void SetLastCheckpointId(string id)
+    {
+        gameData.lastCheckpointId = id;
     }
 
 }

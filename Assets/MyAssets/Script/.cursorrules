@@ -1,0 +1,21 @@
+- 项目介绍：
+    这是一个基于unity引擎的2d ARPG游戏项目
+- 项目结构：
+    1. 存档系统
+    2. 技能系统
+    3. 玩家系统
+    4. 合成系统
+    5. 背包系统
+    6. 敌人系统
+    7. 音效系统
+    8. UI系统
+    9. 等等未来可能添加的系统 
+- 规则：
+    1. 所有脚本必须写在Assets/MyAssets/Script文件夹下
+    2. 在不大幅变动原先脚本结构的情况下，进行代码补全和优化
+    3. 现在需要优先修改Checkpoint.cs等对存档及检查点有影响的脚本
+    4. 现有的逻辑是保存最近的一个存档点closestCheckPoint的ID到存档文件savedata中，
+    然后在loadgame时将玩家传送到这个closestCheckPoint，
+    我需要将它改成记录lastCheckPoint位置，并对checkpoint新增一个交互，
+    靠近checkpoint时按e可以将它设置为lastCheckPoint，同时回复满玩家的血量，以及重新刷新除boss以外所有怪物，
+    类似于黑暗之魂的篝火系统

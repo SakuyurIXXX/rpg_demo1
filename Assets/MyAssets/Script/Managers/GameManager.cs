@@ -6,14 +6,16 @@ public class GameManager : MonoBehaviour, ISaveManager
 {
     public static GameManager instance;
     public Checkpoint[] checkpoints;
-    [SerializeField] private string closestCheckpointId;
+    private Checkpoint lastCheckpoint;
+
     private void Awake()
     {
         if (instance != null)
             Destroy(instance.gameObject);
         else
             instance = this;
-        checkpoints = FindObjectsOfType<Checkpoint>(); // 执行顺序问题，在load之前要把存档点分配给checkpoints,不然这个数组会在没东西的时候被遍历，就没结果了，要不就手动分配对象
+            
+        checkpoints = FindObjectsOfType<Checkpoint>();
     }
 
     private void Start()
@@ -27,12 +29,11 @@ public class GameManager : MonoBehaviour, ISaveManager
         if (Input.GetKeyDown(KeyCode.M))
             RestartScene();
     }
+
     public void RestartScene()
     {
         SaveManager.instance.SaveGame();
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 
     public void LoadData(GameData _data)
@@ -45,59 +46,84 @@ public class GameManager : MonoBehaviour, ISaveManager
                 {
                     checkpoint.ActivateCheckpoint();
                 }
-
             }
         }
-        closestCheckpointId = _data.closestCheckpointId;
 
-        Invoke("PlacePlayerAtClosestCheckpoint", .1f);
+        if (!string.IsNullOrEmpty(_data.lastCheckpointId))
+        {
+            foreach (Checkpoint checkpoint in checkpoints)
+            {
+                if (checkpoint.id == _data.lastCheckpointId)
+                {
+                    lastCheckpoint = checkpoint;
+                    break;
+                }
+            }
+        }
 
+        Invoke("PlacePlayerAtLastCheckpoint", 0.1f);
     }
 
-    private void PlacePlayerAtClosestCheckpoint()
+    private void PlacePlayerAtLastCheckpoint()
     {
-        foreach (Checkpoint checkpoint in checkpoints)
+        if (lastCheckpoint != null)
         {
-            if (closestCheckpointId == checkpoint.id)
-                PlayerManager.instance.player.transform.position = checkpoint.transform.position;
+            PlayerManager.instance.player.transform.position = lastCheckpoint.transform.position;
+        }
+        else
+        {
+            Debug.LogWarning("没有找到上次使用的检查点，玩家将在默认位置重生");
         }
     }
 
     public void SaveData(ref GameData _data)
     {
-        _data.closestCheckpointId = FindClosestCheckpoint().id;
+        // 1. 先保存最后使用的检查点ID
+        if (lastCheckpoint != null)
+        {
+            _data.lastCheckpointId = lastCheckpoint.id;
+        }
+        
+        // 2. 保存检查点激活状态
         _data.checkpoints.Clear();
-
         foreach (Checkpoint checkpoint in checkpoints)
         {
-            _data.checkpoints.Add(checkpoint.id, checkpoint.activationStatus);
+            // 只保存已激活的检查点
+            if (checkpoint.activationStatus)
+            {
+                _data.checkpoints.Add(checkpoint.id, true);
+            }
+        }
+        
+        // 3. 确保lastCheckpointId不会被意外覆盖
+        if (lastCheckpoint != null)
+        {
+            // 再次确认最后使用的检查点ID没有被改变
+            if (_data.lastCheckpointId != lastCheckpoint.id)
+            {
+                _data.lastCheckpointId = lastCheckpoint.id;
+            }
         }
     }
 
-    private Checkpoint FindClosestCheckpoint()
+    public void SetLastCheckpoint(Checkpoint checkpoint)
     {
-        float closestDistance = Mathf.Infinity;
-        Checkpoint closestCheckpoint = null;
-
-        foreach (var checkpoint in checkpoints)
+        if (checkpoint != null)
         {
-            float distanceToCheckpoint = Vector2.Distance(PlayerManager.instance.player.transform.position, checkpoint.transform.position);
-
-            if (distanceToCheckpoint < closestDistance && checkpoint.activationStatus == true)
-            {
-                closestDistance = distanceToCheckpoint;
-                closestCheckpoint = checkpoint;
-            }
+            lastCheckpoint = checkpoint;
         }
+    }
 
-        return closestCheckpoint;
+    public Vector3 GetLastCheckpointPosition()
+    {
+        if (lastCheckpoint != null)
+            return lastCheckpoint.transform.position;
+            
+        return Vector3.zero;
     }
 
     public void PauseGame(bool _pause)
     {
-        if (_pause)
-            Time.timeScale = 0;
-        else
-            Time.timeScale = 1;
+        Time.timeScale = _pause ? 0 : 1;
     }
 }
